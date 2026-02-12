@@ -105,3 +105,54 @@ Q-10,
 select emp_name , salary
 from employee
 order by  salary  desc limit 5;
+
+PHASE-3,
+Q-1,
+select name, salary from employee 
+where salary > 50000;
+
+Q-2,
+select name ,salary from employee
+where salary between 30000 and 60000;
+
+Q-3,
+select name from employee
+where name like 'A%';
+
+ Q-4,
+select name from employee 
+where department is NULL;
+
+Q-5,
+select name,department,salary 
+from employee 
+where department = 'HR' and salary > 40000;
+
+ Q-6,
+select department,
+count(*) as total_emp 
+from employee
+group by department;
+
+Q-7,
+select department,
+avg(salary) as avg_salary
+from employee 
+group by department
+having avg(salary) > 45000;
+
+Q-8,
+select name , salary 
+from employee order by salary
+desc;
+
+Q-9,
+select * from employee
+where department 
+in ('HR','Finance','IT');
+
+Q-10,
+select name, hire_date
+from employee
+where hire_date < '2020-10-10';
+
