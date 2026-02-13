@@ -156,3 +156,83 @@ select name, hire_date
 from employee
 where hire_date < '2020-10-10';
 
+String and Substring
+
+Q-1,
+select upper(name) as customer_name from customer;
+
+Q-2,
+select lower(name) as customer_name from customer;
+
+Q-3,
+select length(name) from customer;
+
+Q-4,
+select substring(email,1,5) from customer;
+
+Q-5,
+select right(city,3) from customer;
+
+Q-6,
+select concat(name,' ',city) from customer;
+
+Q-7,
+select concat_ws('-',name,email,city) from customer;
+
+Q-8,
+select name from customer
+where name  like 'A%';
+
+Q-9,
+select name , email from customer
+where email like '%example%';
+
+Q-10,
+select replace
+(email, 'example.com',
+'company.com') as replace_email
+from customer;
+
+Q-11,
+select trim(both from name)
+from customer;
+
+Q-12,
+select email,substring
+(email from position
+('@' in email)+1) 
+from customer;
+
+Q-13,
+select name from customer
+where length(name) = 10;
+
+Q-14,
+select name, left(name,position
+(' 'in name)-1) as first_name from customer;
+
+Q-15,
+ select name,
+       substring(name from position
+	   (' ' in name)+1) as surname
+from customer;
+
+Q-16,
+select name from customer
+where substring(name,2,1) = 'r';
+
+Q-17,
+select count(*) from customer
+where email like '%.com';
+
+Q-18,
+select replace(name,'a','@') from customer;
+
+Q-19,
+select concat(substring(from position(' ' in name)+1), ', ', 
+left(name, position(' ' in name)-1)) as formatted_namefrom
+from customers;
+
+Q-20,
+select city from customer
+where city like '%pur';
