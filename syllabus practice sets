@@ -236,3 +236,111 @@ from customers;
 Q-20,
 select city from customer
 where city like '%pur';
+
+Phase-4, Alter and Cases
+
+Q-1,
+alter table employees add bonus int;
+
+Q-2,
+alter table employees rename column salary to base_salary;
+
+Q-3,
+alter table employees drop column hire_date;
+
+Q-4,
+alter table employees alter column bonus type decimal(10,2);
+
+Q-5,
+select name,
+       case when base_salary > 50000 then 'high'
+            else 'low' end as salary_category
+from employees;
+
+Q-6,
+select name,
+       case when department is null then 'unassigned'
+            else department end as dept_label
+from employees;
+
+Q-7,
+alter table employees add experience_level varchar(20);
+
+Q-8,
+update employees
+set experience_level = case
+    when hire_date < '2018-01-01' then 'senior'
+    else 'junior'
+end;
+
+Q-9,
+select name, base_salary,
+       case when base_salary > 50000 then base_salary*0.20
+            else base_salary*0.10 end as tax
+from employees;
+
+Q-10.
+select name,
+       case department
+            when 'it' then 'tech team'
+            when 'hr' then 'support team'
+            when 'finance' then 'money team'
+            else 'other'
+       end as dept_group
+from employees;
+
+Q-11,
+alter table employees
+add constraint salary_check check (base_salary > 0);
+
+Q-12,
+alter table employees
+alter column bonus set default 5000;
+
+Q-13,
+select name,
+       case when hire_date < '2020-01-01' then 'old employee'
+            else 'new employee' end as status
+from employees;
+
+Q-14,
+alter table employees
+add dept_id int,
+add constraint fk_dept foreign key (dept_id) references departments(dept_id);
+
+Q-15,
+alter table employees drop constraint salary_check;
+
+Q-16,
+select case when base_salary > 50000 then 'high' else 'low' end as category,
+       count(*) as count_emp
+from employees
+group by category;
+
+Q-17,
+select name, base_salary,
+       case department
+            when 'it' then base_salary*0.15
+            when 'hr' then base_salary*0.10
+            when 'finance' then base_salary*0.20
+            else base_salary*0.05
+       end as perf_bonus
+from employees;
+
+Q-18,
+select name, city,
+       case
+            when city in ('lucknow','delhi') then 'north'
+            when city in ('mumbai','pune') then 'west'
+            else 'other'
+       end as city_group
+from employees;
+
+Q-19,
+alter table employees rename to staff;
+
+Q-20,
+select name, base_salary,
+       case when base_salary > 50000 then 'high' else 'low' end as salary_category
+from staff
+order by salary_category desc;
