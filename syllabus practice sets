@@ -344,3 +344,72 @@ select name, base_salary,
        case when base_salary > 50000 then 'high' else 'low' end as salary_category
 from staff
 order by salary_category desc;
+
+Phase-5
+
+Q-1,
+select e.name,d.dept_name
+from employees e
+join departments d on 
+e.dept_id = d.dept_id;
+
+Q-2,
+select e.name,d.dept_name
+from employees e
+left join departments d on 
+e.dept_id = d.dept_id;
+
+Q-3,
+select d.dept_name
+from departments d
+left join employees e on 
+d.dept_id = e.dept_id
+where e.employee_id is null;
+
+Q-4,
+select d.dept_name, 
+count(e.employee_id) as emp_count
+from departments d
+left join employees e on d.dept_id = e.dept_id
+group by d.dept_name;
+
+Q-5,
+select e.name , e.salary,d.dept_name
+from employees e join
+departments d on
+e.dept_id = d. dept_id
+where e. salary > 50000;
+
+Q-6,
+select e.name, d.dept_name,e.hire_date
+from employees e join departments d
+on e.dept_id = d.dept_id
+where e.hire_date < '2020-01-01';
+
+Q-7,
+select d.dept_name, avg(e.salary) as avg_salary
+from departments d
+join employees e on d.dept_id = e.dept_id
+group by d.dept_name;
+
+Q-8,
+select name
+from employees
+where dept_id is null;
+
+Q-9,
+select e.name, d.dept_name
+from employees e left join
+departments d on e.dept_id = d.dept_id
+order by d.dept_name;
+
+Q-10,
+select d.dept_name, e.name, e.salary
+from departments d join employees e
+on d.dept_id = e.dept_id
+where e.salary = (select max(salary)
+from employees where
+dept_id = d.dept_id);
+
+
+
